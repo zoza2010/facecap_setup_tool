@@ -9,8 +9,7 @@ class CharacterSetup(object):
     def __init__(self, face_mesh_model):
         self.face_mesh_model = face_mesh_model
         self._facecap_device_path = ""
-        # self.config_path = os.path.join(os.path.dirname(__file__), "config.json")
-        r"Z:\models\diva\config.json"
+        self.config_path = os.path.join(os.path.dirname(__file__), "config.json")
         self.scene = FBSystem().Scene
 
     def read_config(self):
@@ -19,6 +18,20 @@ class CharacterSetup(object):
             return json.loads(f.read())
 
     def write_config(self, path):
+        pass
+        # # create config file
+        # config = dict()
+        # for i in sender_nodes:
+        #     src = i
+        #     # to lower camel case
+        #     split_src = i.split(" ")
+        #     dst =[split_src[0]]
+        #     for i in split_src[1:]:
+        #         dst.append(i.capitalize())
+        #     dst = "".join(dst)
+        #     config[src] = dst
+        # with open(r"Z:\models\diva\config.json", "w") as f:
+        #     f.write(json.dumps(config, indent=4, sort_keys=True))
 
     def find_node_by_name(self, node, name):
         for i in node.Nodes:
@@ -93,8 +106,7 @@ class CharacterSetup(object):
 
         # connect tweak device
 
-
-def main():
+def run():
     sel = FBModelList()
     FBGetSelectedModels(sel)
     try:
@@ -107,6 +119,3 @@ def main():
         raise Exception("model is not of type mesh")
     char_setup = CharacterSetup(model)
     char_setup.setup_facecap()
-
-
-main()
