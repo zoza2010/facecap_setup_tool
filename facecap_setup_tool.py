@@ -41,13 +41,13 @@ class CharacterSetup(object):
     def create_device(self, device_name, name):
         device = FBCreateObject("Browsing/Templates/Devices", device_name, name)
         if not device:
-            raise Exception("FaceCap OSC Device plugin was not found ")
+            raise Exception("{} plugin was not found".format(device_name))
         self.scene.Devices.append(device)
         return device
 
     def setup_facecap(self):
         facecap_device = self.create_device("FaceCap OSC Device", self.face_mesh_model.FullName + "_facecap_device")
-        facecap_tweak_device = self.create_device("FaceCap Multconcert",
+        facecap_tweak_device = self.create_device("FaceCap Multconecrt",
                                                   self.face_mesh_model.FullName + "_facecap_device")
 
         face_mesh_property_list = self.face_mesh_model.PropertyList
